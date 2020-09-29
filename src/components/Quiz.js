@@ -1,14 +1,14 @@
 import React, { useState, useEffect } from 'react';
 import Display from './Display';
 
-export default function Quiz() {
+export default function Quiz(props) {
     const [currentQuestion, setCurrentQuestion] = useState(0);
     const [showScore, setShowScore] = useState(false);
     const [score, setScore] = useState(0);
     const [questions, setquestions] = useState([]);
 
     useEffect(() => {
-        fetch("http://localhost:3009/quiz")
+        fetch("http://localhost:3009/"+props.category)
             .then(res => res.json())
             .then((result) => {
                 setquestions(result);
